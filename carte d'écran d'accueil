@@ -1,0 +1,362 @@
+/* Carte globale */
+type: custom:mod-card
+style: |
+  hui-vertical-stack-card {
+    background: linear-gradient(
+      135deg,
+      rgba(130, 130, 130, 0.2),
+      rgba(130, 130, 130, 0.2)
+    ) !important;
+    border-radius: 30px !important;
+    color: white !important;
+    box-shadow: 2px 2px 9px rgba(0,0,0,0.8);
+    display: block;
+    padding: 0px 0 10px 0px !important;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+  /* Effet de lumière */
+  :host::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 30px !important;
+    padding: 1px;
+    background: linear-gradient(
+      140deg,
+      rgba(170, 170, 170, 0.5) 10%,
+      rgba(0, 0, 0, 0) 70%,
+      rgba(180, 180, 180, 0) 90%
+      );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: 2;
+  }
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:bubble-card
+      card_type: button
+      button_type: text
+      icon: mdi:bed-king-outline
+      name: Pièce 1 /* Remplacez par le nom de votre choix */
+      entity: sensor.prise_puissance /* remplacez par votre entité pour afficher son état en dessous du nom de votre pièce */
+      show_state: true
+      show_last_changed: false
+      show_attribute: true
+      attribute: null
+      force_icon: false
+      show_last_updated: false
+      card_mod:
+        style: |
+          .bubble {
+            position: relative;
+          }
+          /* Effet de lumière sur l'icone */
+          .bubble-icon-container::before {
+            content: "";
+            position: absolute;
+            inset: 0px;
+            border-radius: 30px !important;
+            padding: 1px;
+            background: linear-gradient(
+              140deg,
+              rgba(170, 170, 170, 0.7) 10%,
+              rgba(0, 0, 0, 0) 70%,
+              rgba(180, 180, 180, 0) 90%
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 2;
+          }
+
+          :host {
+            --bubble-main-background-color: transparent !important;
+            --bubble-icon-background-color: rgb(140, 140, 140, 0.4) !important;
+            --bubble-box-shadow: none !important;
+          }
+
+          .bubble-name {
+            color: rgb(200, 200, 200) !important;
+          }
+          .bubble-state {
+            color: rgb(150, 150, 150) !important;
+          }
+          /* personnalisation du sub-button en orange lors d'une batterie faible */
+          .bubble-sub-button-1 {
+            color: rgb(255, 130, 0) !important;
+            filter: drop-shadow(0 0 6px rgba(255, 130, 0, 1));
+          }
+          .bubble-icon {
+            color: rgb(200, 200, 220) !important;
+            opacity: 1 !important;
+          }
+          /* personnalisation du sub-button en rouge lors d'une batterie très faible */
+          .bubble-sub-button-2 {
+            color: rgb(255, 0, 0) !important;
+            filter: drop-shadow(0 0 6px rgba(255, 0, 0, 1));
+            animation: blink 1.5s linear infinite !important;
+          }
+          .bubble-icon-container {
+            box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          }
+          /* permet de faire clignoter l'icone sub-button en rouge */
+          @keyframes blink {
+            0%  { opacity: 1; }
+            50% { opacity: 0.2; }
+            100% { opacity: 1; }
+          }
+      button_action:
+        tap_action:
+          action: navigate
+          navigation_path: "#votre_pièce" /* Sous tout les "#votre_piece" modifiez le nom par celui de votre pop-up que vous aurez crée */
+        double_tap_action:
+          action: navigate
+          navigation_path: "#votre_pièce"
+        hold_action:
+          action: navigate
+          navigation_path: "#votre_pièce"
+      tap_action:
+        action: navigate
+        navigation_path: "#votre_pièce"
+      double_tap_action:
+        action: navigate
+        navigation_path: "#votre_pièce"
+      hold_action:
+        action: navigate
+        navigation_path: "#votre_pièce"
+      sub_button:
+        - icon: mdi:battery-20
+          state_background: false
+          show_background: false
+          visibility:
+            - condition: numeric_state
+              entity: sensor.votre_appareil_a_batterie
+              below: 40
+              above: 20
+          hide_when_parent_unavailable: false
+          tap_action:
+            action: navigate
+            navigation_path: "#batteries_1" /* Afficher une carte pop-up facultative vous permettant de voir quels appareils ont une batterie faible lorsque vous appuyez sur l'icone sub-button */
+          double_tap_action:
+            action: navigate
+            navigation_path: "#batteries_1"
+          hold_action:
+            action: navigate
+            navigation_path: "#batteries_1"
+          rows: "1"
+        - icon: mdi:battery-20
+          state_background: false
+          show_background: false
+          tap_action:
+            action: navigate
+            navigation_path: "#batteries_1"
+          double_tap_action:
+            action: navigate
+            navigation_path: "#batteries_1"
+          hold_action:
+            action: navigate
+            navigation_path: "#batteries_1"
+          visibility:
+            - condition: or
+              conditions:
+                - condition: numeric_state
+                  entity: sensor.votre_appareil_a_batterie
+                  below: 21
+
+      /* le mod-card vous permet de centrer les icones interactives en dessous de la carte principal */
+    - type: custom:mod-card
+      style: |
+        ha-card {
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+          padding: 4px 0;
+          background: none !important;
+          box-shadow: none !important;
+          border: none !important;
+        }
+      card:
+        type: horizontal-stack
+        cards:
+
+          /* Premier bouton */
+          - type: custom:button-card
+            icon: mdi:lightbulb-outline
+            entity: light.votre_lampe /* Remplacez cette entité par votre lampe / pièce */
+            tap_action:
+              action: perform-action
+              perform_action: light.toggle
+              target:
+                entity_id: light.votre_lampe
+            show_name: false
+            show_state: false
+            show_icon: true
+            styles:
+              card:
+                - border-radius: 50%
+                - width: 36px
+                - height: 36px
+                - padding: 0px
+                - opacity: 1
+                - box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+                - background-color: |
+                    [[[
+                      if (entity.state === 'on' && entity.attributes.rgb_color) {
+                        const rgb = entity.attributes.rgb_color;
+                        return `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.4)`;
+                      } else {
+                        return 'rgba(100, 100, 100, 0.5)';
+                      }
+                    ]]]
+              icon:
+                - color: rgb(200, 200, 200)
+                - width: 50px
+                - height: 50px
+            card_mod:
+              style: |
+                :host {
+                  display: block;
+                  overflow: visible;
+                  position: relative;
+                  border-radius: 50% !important;
+                  transform-origin: center;
+                  border: none !important;
+                }
+
+                :host::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0;
+                  border-radius: 50% !important;
+                  padding: 1px;
+                  background: linear-gradient(
+                    140deg,
+                    rgba(170, 170, 170, 0.7) 10%,
+                    rgba(0, 0, 0, 0) 70%,
+                    rgba(180, 180, 180, 0) 90%
+                  );
+                  -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  z-index: 2;
+                }
+
+                ha-card::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0px;
+                  border-radius: 50% !important;
+                  background: transparent !important;
+                  backdrop-filter: none !important; 
+                  -webkit-backdrop-filter: none !important;
+                  pointer-events: none;
+                  z-index: 0;
+                }
+
+                ha-card {
+                  position: relative;
+                  z-index: 1;
+                  border-radius: 50% !important;
+                  overflow: visible;
+                  padding: 0;
+                  border: none !important;
+                }
+          /* Deuxieme bouton */
+          - type: custom:button-card
+            icon: mdi:power-socket-fr
+            entity: switch.prise /* Remplacez le nom par votre appareil */
+            tap_action:
+              action: perform-action
+              perform_action: switch.toggle
+              target:
+                entity_id: switch.prise
+            show_name: false
+            show_state: false
+            styles:
+              card:
+                - border-radius: 50%
+                - width: 36px
+                - height: 36px
+                - padding: 0px
+                - opacity: 1
+                - box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+                - background-color: |
+                    [[[
+                      if (entity.state === 'on') {
+                        return 'rgba(40, 200, 200, 0.4)';
+                      } else {
+                        return 'rgba(100, 100, 100, 0.5)';
+                      }
+                    ]]]
+              icon:
+                - color: rgb(200, 200, 200)
+                - width: 23px
+                - height: 23px
+            card_mod:
+              style: |
+                :host {
+                  display: block;
+                  overflow: visible;
+                  position: relative;
+                  border-radius: 50% !important;
+                  transform-origin: center;
+                  border: none !important;
+                }
+
+                :host::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0;
+                  border-radius: 50% !important;
+                  padding: 1px;
+                  background: linear-gradient(
+                    140deg,
+                    rgba(170, 170, 170, 0.7) 10%,
+                    rgba(0, 0, 0, 0) 70%,
+                    rgba(180, 180, 180, 0) 90%
+                  );
+                  -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  z-index: 2;
+                }
+
+                ha-card::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0px;
+                  border-radius: 50% !important;
+                  background: transparent !important;
+                  backdrop-filter: none !important; 
+                  -webkit-backdrop-filter: none !important;
+                  pointer-events: none;
+                  z-index: 0;
+                }
+
+                ha-card {
+                  position: relative;
+                  z-index: 1;
+                  border-radius: 50% !important;
+                  overflow: visible;
+                  padding: 0;
+                  border: none !important;
+                }
+grid_options:
+  columns: 6
+  rows: auto
