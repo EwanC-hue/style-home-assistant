@@ -1,0 +1,299 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#graphiques_prise"
+    name: Graphique(s)
+    show_header: true
+    button_type: name
+    margin: 7px
+    margin_top_mobile: 160px
+    bg_opacity: "40"
+    shadow_opacity: "0"
+    bg_color: rgb(120. 110. 110)
+    button_action: {}
+    show_name: true
+    show_icon: true
+    bg_blur: "8"
+    backdrop_blur: "0"
+    icon: mdi:chart-bell-curve-cumulative
+    styles: |-
+      .bubble-button-card-container {
+          backdrop-filter: blur(5px) !important;
+          box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6) !important;
+          border-radius: 30px !important;
+          background-color: rgba(10, 10, 10, 0.3) !important;
+      }
+        .bubble-icon-container {
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+        .bubble-icon {
+          color: rgb(200, 200, 200) !important;
+          opacity: 1 !important;
+        }
+        .bubble-icon-container {
+          background-color: rgb(200, 200, 200, 0.1) !important;
+        }
+        .bubble-icon-container::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 30px !important;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(170, 170, 170, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .bubble-background::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 30px !important;
+          padding: 1px;
+          background: linear-gradient(
+            172deg,
+            rgba(170, 170, 170, 0.7) 10%,
+            rgba(0, 0, 0, 0) 60%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+    close_action:
+      action: navigate
+      navigation_path: "#piece_1"
+  - type: custom:bubble-card
+    card_type: empty-column
+    rows: "1"
+  - type: custom:mod-card
+    card_mod:
+      style: |
+        ha-card {
+          background-color: rgba(90, 90, 90, 0.2);
+          border-radius: 40px;
+          padding: 12px;
+          backdrop-filter: blur(3px);
+          box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
+        }
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 40px !important;
+          padding: 1px;
+          background: linear-gradient(
+            135deg,
+            rgba(170, 170, 170, 0.7) 0%,
+            rgba(0, 0, 0, 0) 60%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+    card:
+      type: vertical-stack
+      cards:
+        - type: custom:bubble-card
+          card_type: button
+          button_type: name
+          name: P R I S E
+          icon: mdi:power-socket-fr
+          sub_button: []
+          styles: |-
+            :host {
+              --bubble-main-background-color: transparent !important;
+              --bubble-icon-background-color: transparent !important;
+              --bubble-box-shadow: none !important;
+              --bubble-icon-color: rgb(200, 200, 220) !important;
+            }
+            .bubble-name {
+              color: rgb(200, 200, 200) !important;
+            }
+            .bubble-state {
+              color: rgb(150, 150, 150) !important;
+            }
+          grid_options:
+            columns: 8
+            rows: auto
+          show_icon: true
+          button_action:
+            tap_action:
+              action: none
+            double_tap_action:
+              action: none
+            hold_action:
+              action: none
+          tap_action:
+            action: none
+          double_tap_action:
+            action: none
+          hold_action:
+            action: none
+        - type: custom:apexcharts-card
+          header:
+            show: true
+            show_states: true
+            colorize_states: true
+          chart_type: line
+          apex_config:
+            chart:
+              background: transparent
+              toolbar:
+                show: false
+            stroke:
+              curve: smooth
+              width: 4
+            dataLabels:
+              enabled: false
+            tooltip:
+              theme: dark
+              x:
+                show: true
+                format: HH:mm
+            grid:
+              borderColor: rgba(255, 244, 255, 0.1)
+              row:
+                colors:
+                  - rgba(255, 255, 255, 0.03)
+                  - transparent
+                opacity: 0.5
+            yaxis:
+              labels:
+                style:
+                  colors: white
+                  fontSize: 12px
+            xaxis:
+              labels:
+                style:
+                  colors: "#ffffff"
+                  fontSize: 12px
+          series:
+            - entity: sensor.prise_1
+              name: 24h glissantes
+              type: line
+              color: orange
+              show:
+                legend_value: true
+              stroke_width: 6
+              curve: smooth
+          card_mod:
+            style: |
+              ha-card {
+                background-color: rgba(110, 110, 110, 0.2);
+                border-radius: 40px;
+                padding: 12px;
+                backdrop-filter: blur(3px);
+                box-shadow: 2px 3px 7px rgba(0,0,0,0.6);
+              }
+              ha-card::before {
+                content: "";
+                position: absolute;
+                inset: 0px;
+                border-radius: 40px !important;
+                padding: 1px;
+                background: linear-gradient(
+                  135deg,
+                  rgba(170, 170, 170, 0.7) 0%,
+                  rgba(0, 0, 0, 0) 60%
+                );
+                -webkit-mask:
+                  linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                pointer-events: none;
+                z-index: 2;
+              }
+  - type: custom:bubble-card
+    card_type: button
+    button_type: name
+    name: Revenir
+    icon: mdi:arrow-left
+    tap_action:
+      action: navigate
+      navigation_path: "#piece_1"
+    double_tap_action:
+      action: none
+    hold_action:
+      action: none
+    styles: |-
+      .bubble-button-card-container {
+          backdrop-filter: blur(5px) !important;
+          box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6) !important;
+          border-radius: 30px !important;
+          margin: 0 auto !important;
+          text-align: center !important;
+          width: 140px !important;
+          background-color: rgba(10, 10, 10, 0.3) !important;
+      }
+        .bubble-icon-container {
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+        }
+        .bubble-icon {
+          color: rgb(200, 200, 200) !important;
+          opacity: 1 !important;
+        }
+        .bubble-icon-container {
+          background-color: rgb(200, 200, 200, 0.1) !important;
+        }
+        .bubble-icon-container::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 30px !important;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(170, 170, 170, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+        .bubble-background::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 30px !important;
+          padding: 1px;
+          background: linear-gradient(
+            162deg,
+            rgba(170, 170, 170, 0.7) 10%,
+            rgba(0, 0, 0, 0) 60%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+    button_action:
+      tap_action:
+        action: navigate
+        navigation_path: "#piece_1"
+      double_tap_action:
+        action: none
