@@ -44,8 +44,10 @@ card:
       card_type: button
       button_type: text
       icon: mdi:bed-king-outline
-      name: Pièce 1 /* Remplacez par le nom de votre choix */
-      entity: sensor.prise_puissance /* remplacez par votre entité pour afficher son état en dessous du nom de votre pièce */
+      name: Pièce 1
+      /* Remplacez par le nom de votre choix */
+      entity: sensor.prise_puissance
+      /* remplacez par votre entité pour afficher son état en dessous du nom de votre pièce */
       show_state: true
       show_last_changed: false
       show_attribute: true
@@ -118,7 +120,8 @@ card:
       button_action:
         tap_action:
           action: navigate
-          navigation_path: "#votre_pièce" /* Sous tout les "#votre_piece" modifiez le nom par celui de votre pop-up que vous aurez crée */
+          navigation_path: "#votre_pièce"
+          /* Sous tout les "#votre_piece" modifiez le nom par celui de votre pop-up que vous aurez crée */
         double_tap_action:
           action: navigate
           navigation_path: "#votre_pièce"
@@ -146,7 +149,8 @@ card:
           hide_when_parent_unavailable: false
           tap_action:
             action: navigate
-            navigation_path: "#batteries_1" /* Afficher une carte pop-up facultative vous permettant de voir quels appareils ont une batterie faible lorsque vous appuyez sur l'icone sub-button */
+            navigation_path: "#batteries_1"
+            /* Afficher une carte pop-up facultative vous permettant de voir quels appareils ont une batterie faible lorsque vous appuyez sur l'icone sub-button */
           double_tap_action:
             action: navigate
             navigation_path: "#batteries_1"
@@ -192,7 +196,8 @@ card:
           /* Premier bouton */
           - type: custom:button-card
             icon: mdi:lightbulb-outline
-            entity: light.votre_lampe /* Remplacez cette entité par votre lampe / pièce */
+            entity: light.votre_lampe
+            /* Remplacez cette entité par votre lampe / pièce */
             tap_action:
               action: perform-action
               perform_action: light.toggle
@@ -277,7 +282,8 @@ card:
           /* Deuxieme bouton */
           - type: custom:button-card
             icon: mdi:power-socket-fr
-            entity: switch.prise /* Remplacez le nom par votre appareil */
+            entity: switch.prise
+            /* Remplacez le nom par votre appareil */
             tap_action:
               action: perform-action
               perform_action: switch.toggle
