@@ -22,13 +22,13 @@ cards:
         show_background: false
         visibility:
           - condition: numeric_state
-            entity: sensor.votre_appareil_a_batterie
+            entity: sensor.votre_appareil_a_batterie # remplacez par votre appareil
             below: 40
             above: 20
         hide_when_parent_unavailable: false
         tap_action:
           action: navigate
-          navigation_path: "#batteries_1"
+          navigation_path: "#batteries_1" # Vous dirige vers la page des alertes pour les batteries
         double_tap_action:
           action: navigate
           navigation_path: "#batteries_1"
@@ -42,7 +42,7 @@ cards:
           - condition: or
             conditions:
               - condition: numeric_state
-                entity: sensor.votre_appareil_a_batterie
+                entity: sensor.votre_appareil_a_batterie # remplacez par votre appareil
                 below: 21
     icon: mdi:bed-king-outline
     hide_backdrop: false
@@ -219,17 +219,17 @@ cards:
             action: perform-action
             perform_action: hue.activate_scene
             target:
-              entity_id: scene.scenario_1
+              entity_id: scene.scenario_1 # remplacez par votre scenario
           hold_action:
             action: perform-action
             perform_action: light.turn_off
             target:
-              entity_id: light.piece_1
+              entity_id: light.piece_1 # remplacez par votre piece
           double_tap_action:
             action: perform-action
             perform_action: hue.activate_scene
             target:
-              entity_id: scene.scenario_2
+              entity_id: scene.scenario_2 # remplacez par votre scenario
           card_mod:
             style: |
               .bubble {
@@ -295,8 +295,8 @@ cards:
               card_type: button
               button_type: slider
               icon: mdi:lightbulb
-              name: Lampe 1
-              entity: light.lampe_1
+              name: Lampe 1 # remplacez par le nom de votre appareil
+              entity: light.lampe_1 # remplacez par votre appareil
               min_value: 0
               max_value: 100
               step: 1
@@ -305,7 +305,7 @@ cards:
                 action: perform-action
                 perform_action: light.toggle
                 target:
-                  entity_id: light.lampe_1
+                  entity_id: light.lampe_1 # remplacez par votre appareil
               rows: "1.2"
               sub_button:
                 - icon: mdi:power
@@ -315,7 +315,7 @@ cards:
                     action: perform-action
                     perform_action: light.toggle
                     target:
-                      entity_id: light.lampe_1
+                      entity_id: light.lampe_1 # remplacez par votre appareil
               card_mod:
                 style: |
                   .bubble {
@@ -379,8 +379,8 @@ cards:
               card_type: button
               button_type: slider
               icon: mdi:lightbulb
-              name: Lampe 2
-              entity: light.lampe_2
+              name: Lampe 2 # remplacez par le nom de votre appareil
+              entity: light.lampe_2 # remplacez par votre appareil
               min_value: 0
               max_value: 100
               step: 1
@@ -389,7 +389,7 @@ cards:
                 action: perform-action
                 perform_action: light.toggle
                 target:
-                  entity_id: light.lampe_2
+                  entity_id: light.lampe_2 # remplacez par votre appareil
               rows: "1.2"
               sub_button:
                 - icon: mdi:power
@@ -399,7 +399,7 @@ cards:
                     action: perform-action
                     perform_action: light.toggle
                     target:
-                      entity_id: light.lampe_2
+                      entity_id: light.lampe_2 # remplacez par votre appareil
               card_mod:
                 style: |
                   .bubble {
@@ -463,8 +463,8 @@ cards:
           card_type: button
           button_type: slider
           icon: mdi:lightbulb
-          name: Lampe 3
-          entity: light.lampe_3
+          name: Lampe 3 # remplacez par le nom de votre appareil
+          entity: light.lampe_3 # remplacez par votre appareil
           min_value: 0
           max_value: 100
           step: 1
@@ -473,7 +473,7 @@ cards:
             action: perform-action
             perform_action: light.toggle
             target:
-              entity_id: light.lampe_3
+              entity_id: light.lampe_3 # remplacez par votre appareil
           rows: "1.2"
           sub_button:
             - icon: mdi:power
@@ -483,7 +483,7 @@ cards:
                 action: perform-action
                 perform_action: light.toggle
                 target:
-                  entity_id: light.lampe_3
+                  entity_id: light.lampe_3 # remplacez par votre appareil
           card_mod:
             style: |
               .bubble {
@@ -584,14 +584,14 @@ cards:
               - type: horizontal-stack
                 cards:
                   - type: custom:button-card
-                    name: Scénario 1
+                    name: Scénario 1 # remplacez par le nom de votre scenario
                     icon: mdi:palette
                     layout: icon_name
                     tap_action:
                       action: call-service
                       service: hue.activate_scene
                       data:
-                        entity_id: scene.scenario_1
+                        entity_id: scene.scenario_1 # remplacez par votre scenario
                     styles:
                       card:
                         - background-color: transparent
@@ -610,14 +610,14 @@ cards:
                         - width: 23px
                         - height: 23px
                   - type: custom:button-card
-                    name: Scénario 2
+                    name: Scénario 2 # remplacez par le nom de votre scenario
                     icon: mdi:palette
                     layout: icon_name
                     tap_action:
                       action: call-service
                       service: hue.activate_scene
                       data:
-                        entity_id: scene.scenario_2
+                        entity_id: scene.scenario_2 # remplacez par votre scenario
                     styles:
                       card:
                         - background-color: transparent
@@ -638,14 +638,14 @@ cards:
               - type: horizontal-stack
                 cards:
                   - type: custom:button-card
-                    name: Scénario 3
+                    name: Scénario 3 # remplacez par le nom de votre scenario
                     icon: mdi:palette
                     layout: icon_name
                     tap_action:
                       action: call-service
                       service: hue.activate_scene
                       data:
-                        entity_id: scene.scenario_3
+                        entity_id: scene.scenario_3 # remplacez par votre scenario
                     styles:
                       card:
                         - background-color: transparent
@@ -732,7 +732,7 @@ cards:
           card_type: button
           entity: cover.volet_1
           button_type: slider
-          name: Volet 1
+          name: Volet 1 # remplacez par le nom de votre appareil
           force_icon: false
           show_state: true
           show_last_changed: false
@@ -827,7 +827,7 @@ cards:
                   action: perform-action
                   perform_action: cover.open_cover
                   target:
-                    entity_id: cover.volet_1
+                    entity_id: cover.volet_1 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -858,7 +858,7 @@ cards:
                   action: perform-action
                   perform_action: cover.stop_cover
                   target:
-                    entity_id: cover.volet_1
+                    entity_id: cover.volet_1 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -888,7 +888,7 @@ cards:
                   action: perform-action
                   perform_action: cover.close_cover
                   target:
-                    entity_id: cover.volet_1
+                    entity_id: cover.volet_1 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -914,9 +914,9 @@ cards:
           rows: "1"
         - type: custom:bubble-card
           card_type: button
-          entity: cover.volet_2
+          entity: cover.volet_2 # remplacez par votre appareil
           button_type: slider
-          name: Volet 2
+          name: Volet 2 # remplacez par le nom de votre appareil
           force_icon: false
           show_state: true
           show_last_changed: false
@@ -1011,7 +1011,7 @@ cards:
                   action: perform-action
                   perform_action: cover.open_cover
                   target:
-                    entity_id: cover.volet_2
+                    entity_id: cover.volet_2 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -1042,7 +1042,7 @@ cards:
                   action: perform-action
                   perform_action: cover.stop_cover
                   target:
-                    entity_id: cover.volet_2
+                    entity_id: cover.volet_2 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -1072,7 +1072,7 @@ cards:
                   action: perform-action
                   perform_action: cover.close_cover
                   target:
-                    entity_id: cover.volet_2
+                    entity_id: cover.volet_2 # remplacez par votre appareil
                 styles:
                   card:
                     - background-color: transparent
@@ -1266,8 +1266,8 @@ cards:
         - type: custom:bubble-card
           card_type: button
           button_type: switch
-          entity: switch.prise
-          name: Prise
+          entity: switch.prise # remplacez par votre appareil
+          name: Prise # remplacez par le nom de votre appareil
           icon: mdi:power-socket-fr
           min_value: 0
           max_value: 100
@@ -1288,7 +1288,7 @@ cards:
               action: perform-action
               perform_action: switch.toggle
               target:
-                entity_id: switch.prise
+                entity_id: switch.prise # remplacez par votre appareil
             hold_action:
               action: none
             double_tap_action:
@@ -1384,7 +1384,7 @@ cards:
           bar_color: red
           min_value: 0
           theme: optimal_when_low
-          entity: sensor.prise
+          entity: sensor.prise # remplacez par votre appareil
           decimal: 0
           max_value: 3680
           tap_action:
@@ -1477,7 +1477,7 @@ cards:
           hold_action:
             action: none
         - type: custom:entity-progress-card
-          entity: sensor.votre_appareil_a_batterie
+          entity: sensor.votre_appareil_a_batterie # remplacez par votre appareil
           name: Interrupteur connecté
           bar_size: small
           layout: horizontal
@@ -1496,7 +1496,7 @@ cards:
                 border-radius: 30px;
                 box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6);
 
-                {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                {% set val = states('sensor.votre_appareil_a_batterie') | int %} # remplacez par votre appareil
 
                 {% if val < 20 %}
                   background: rgba(255, 0, 0, 0.3);
@@ -1509,7 +1509,7 @@ cards:
                 {% endif %}
               }
                .icon {
-                {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                {% set val = states('sensor.votre_appareil_a_batterie') | int %} # remplacez par votre appareil
                 {% if val < 20 %}
                   animation: blink-fast 0.5s linear infinite !important;
                 {% elif val < 40 %}
@@ -1517,1594 +1517,14 @@ cards:
                 {% endif %}
               }
 
-              /* Permet de faire clignoter lentement ou rapidement l'icone en
-              fonction de sa batterie */ @keyframes blink-fast {
+              # Permet de faire clignoter rapidement l'icone en fonction de sa batterie
+              @keyframes blink-fast { 
                 0%   { opacity: 1; }
                 50%  { opacity: 0.2; }
                 100% { opacity: 1; }
               }
 
-
-              @keyframes blink-slow {
-                0%   { opacity: 1; }
-                50%  { opacity: 0.2; }
-                100% { opacity: 1; }
-              }
-
-              .icon {
-                border-radius: 50%;
-                padding: 6px;
-                box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6);
-              }
-
-              ha-card::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 40px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  174deg,
-                  rgba(170, 170, 170, 0.7) 0%,
-                  rgba(0, 0, 0, 0) 60%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-
-              .icon::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 40px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  147deg,
-                  rgba(170, 170, 170, 0.7) 0%,
-                  rgba(0, 0, 0, 0) 60%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-grid_options:
-  columns: 12
-  rows: autotype: vertical-stack
-cards:
-  - type: custom:bubble-card
-    card_type: pop-up
-    hash: "#piece_1"
-    name: Pièce 1
-    show_header: true
-    button_type: name
-    margin: 7px
-    margin_top_mobile: 160px
-    bg_opacity: "41"
-    shadow_opacity: "0"
-    bg_color: rgb(120. 110. 110)
-    button_action: {}
-    show_name: true
-    show_icon: true
-    bg_blur: "4"
-    backdrop_blur: "0"
-    sub_button:
-      - icon: mdi:battery-20
-        state_background: false
-        show_background: false
-        visibility:
-          - condition: numeric_state
-            entity: sensor.votre_appareil_a_batterie
-            below: 40
-            above: 20
-        hide_when_parent_unavailable: false
-        tap_action:
-          action: navigate
-          navigation_path: "#batteries_1"
-        double_tap_action:
-          action: navigate
-          navigation_path: "#batteries_1"
-        hold_action:
-          action: navigate
-          navigation_path: "#batteries_1"
-      - icon: mdi:battery-20
-        state_background: false
-        show_background: false
-        visibility:
-          - condition: or
-            conditions:
-              - condition: numeric_state
-                entity: sensor.votre_appareil_a_batterie
-                below: 21
-    icon: mdi:bed-king-outline
-    hide_backdrop: false
-    styles: |-
-      .bubble-icon-container {
-        box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
-      }
-      .bubble-icon {
-        color: rgb(200, 200, 200) !important;
-        opacity: 1 !important;
-      }
-      .bubble-icon-container {
-        background-color: rgb(200, 200, 200, 0.1) !important;
-      }
-      .bubble-button-card-container {
-        backdrop-filter: blur(5px) !important;
-        box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6) !important;
-        border-radius: 30px !important;
-        background-color: rgba(10, 10, 10, 0.3) !important;
-      }
-      .bubble-sub-button-1 {
-        color: rgb(255, 130, 0) !important;
-        filter: drop-shadow(0 0 6px rgba(255, 130, 0, 1));
-      }
-      .bubble-sub-button-2 {
-        color: rgb(255, 40, 0) !important;
-        filter: drop-shadow(0 0 6px rgba(255, 40, 0, 1));
-        animation: blink 1.5s linear infinite !important;
-      }
-      @keyframes blink {
-        0%   { opacity: 1; }
-        50%  { opacity: 0.2; }
-        100% { opacity: 1; }
-      }
-      .bubble-icon-container::before {
-        content: "";
-        position: absolute;
-        inset: 0px;
-        border-radius: 30px !important;
-        padding: 1px;
-        background: linear-gradient(
-          140deg,
-          rgba(170, 170, 170, 0.7) 10%,
-          rgba(0, 0, 0, 0) 70%
-        );
-        -webkit-mask:
-          linear-gradient(#000 0 0) content-box,
-          linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-        z-index: 2;
-      }
-      .bubble-background::before {
-        content: "";
-        position: absolute;
-        inset: 0px;
-        border-radius: 30px !important;
-        padding: 1px;
-        background: linear-gradient(
-          172deg,
-          rgba(170, 170, 170, 0.7) 10%,
-          rgba(0, 0, 0, 0) 60%
-        );
-        -webkit-mask:
-          linear-gradient(#000 0 0) content-box,
-          linear-gradient(#000 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-        z-index: 2;
-      }
-  - type: custom:bubble-card
-    card_type: empty-column
-  - type: custom:mod-card
-    card_mod:
-      style: |
-        ha-card {
-          background-color: rgba(90, 90, 90, 0.2);
-          border-radius: 40px;
-          padding: 12px;
-          backdrop-filter: blur(3px);
-          box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-        }
-        ha-card::before {
-          content: "";
-          position: absolute;
-          inset: 0px;
-          border-radius: 40px !important;
-          padding: 1px;
-          background: linear-gradient(
-            135deg,
-            rgba(170, 170, 170, 0.7) 0%,
-            rgba(0, 0, 0, 0) 60%
-          );
-          -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-          z-index: 2;
-        }
-    card:
-      type: vertical-stack
-      cards:
-        - type: custom:bubble-card
-          card_type: button
-          button_type: name
-          name: L A M P E ( S )
-          icon: mdi:lightbulb
-          sub_button: []
-          styles: |-
-            :host {
-              --bubble-main-background-color: transparent !important;
-              --bubble-icon-background-color: transparent !important;
-              --bubble-box-shadow: none !important;
-              --bubble-icon-color: rgb(200, 200, 220) !important;
-            }
-            .bubble-name {
-              color: rgb(200, 200, 200) !important;
-            }
-            .bubble-state {
-              color: rgb(150, 150, 150) !important;
-            }
-            .bubble-icon {
-              color: rgb(255, 255, 255) !important;
-            }
-          grid_options:
-            columns: 8
-            rows: auto
-          show_icon: true
-          button_action:
-            tap_action:
-              action: none
-            double_tap_action:
-              action: none
-            hold_action:
-              action: none
-          tap_action:
-            action: none
-          double_tap_action:
-            action: none
-          hold_action:
-            action: none
-        - type: custom:bubble-card
-          card_type: button
-          button_type: slider
-          icon: mdi:bed-king-outline
-          name: Pièce 1
-          entity: light.piece_1
-          min_value: 0
-          max_value: 100
-          step: 1
-          card_layout: large-2-rows
-          allow_light_slider_to_0: true
-          slider_live_update: false
-          light_transition: false
-          tap_to_slide: false
-          attribute: color_temp_kelvin
-          show_state: false
-          show_last_updated: false
-          show_last_changed: true
-          sub_button:
-            - entity: light.piece_1
-              icon: mdi:power
-              show_background: false
-              show_name: false
-              show_state: true
-              tap_action:
-                action: toggle
-              attribute: brightness
-          tap_action:
-            action: perform-action
-            perform_action: hue.activate_scene
-            target:
-              entity_id: scene.scenario_1
-          hold_action:
-            action: perform-action
-            perform_action: light.turn_off
-            target:
-              entity_id: light.piece_1
-          double_tap_action:
-            action: perform-action
-            perform_action: hue.activate_scene
-            target:
-              entity_id: scene.scenario_2
-          card_mod:
-            style: |
-              .bubble {
-                position: relative;
-              }
-              .bubble-button-background {
-                background: rgb(0, 0, 0, 0.6) !important;
-              }
-              .bubble-button-card-container {
-                background: transparent !important;
-                box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                border-radius: 30px !important;
-              }
-              .bubble-icon {
-                opacity: 1 !important;
-              }
-              .bubble-icon-container {
-                background-color: rgb(70, 70, 70, 0.4) !important;
-                box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-              }
-              .bubble-icon-container::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  140deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 60%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-              .bubble-background::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  174deg,
-                  rgba(170, 170, 170, 0.9) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-        - type: horizontal-stack
-          cards:
-            - type: custom:bubble-card
-              card_type: button
-              button_type: slider
-              icon: mdi:lightbulb
-              name: Lampe 1
-              entity: light.lampe_1
-              min_value: 0
-              max_value: 100
-              step: 1
-              allow_light_slider_to_0: true
-              tap_action:
-                action: perform-action
-                perform_action: light.toggle
-                target:
-                  entity_id: light.lampe_1
-              rows: "1.2"
-              sub_button:
-                - icon: mdi:power
-                  show_background: false
-                  show_state: false
-                  tap_action:
-                    action: perform-action
-                    perform_action: light.toggle
-                    target:
-                      entity_id: light.lampe_1
-              card_mod:
-                style: |
-                  .bubble {
-                    position: relative;
-                  }
-                  .bubble-button-background {
-                    background: rgb(0, 0, 0, 0.6) !important;
-                  }
-                  .bubble-button-card-container {
-                    background: transparent !important;
-                    box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                    border-radius: 30px !important;
-                  }
-                  .bubble-icon {
-                    opacity: 1 !important;
-                  }
-                  .bubble-icon-container {
-                    background-color: rgb(70, 70, 70, 0.4) !important;
-                    box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-                  }
-                  .bubble-icon-container::before {
-                    content: "";
-                    position: absolute;
-                    inset: 0px;
-                    border-radius: 30px !important;
-                    padding: 1px;
-                    background: linear-gradient(
-                      140deg,
-                      rgba(170, 170, 170, 0.7) 10%,
-                      rgba(0, 0, 0, 0) 70%,
-                      rgba(180, 180, 180, 0) 90%
-                    );
-                    -webkit-mask:
-                     linear-gradient(#000 0 0) content-box,
-                      linear-gradient(#000 0 0);
-                    -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-                    pointer-events: none;
-                    z-index: 2;
-                  }
-                  .bubble-background::before {
-                    content: "";
-                    position: absolute;
-                    inset: 0px;
-                    border-radius: 30px !important;
-                    padding: 1px;
-                    background: linear-gradient(
-                      160deg,
-                      rgba(170, 170, 170, 0.9) 10%,
-                      rgba(0, 0, 0, 0) 60%
-                    );
-                    -webkit-mask:
-                      linear-gradient(#000 0 0) content-box,
-                      linear-gradient(#000 0 0);
-                    -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-                    pointer-events: none;
-                    z-index: 2;
-                  }
-            - type: custom:bubble-card
-              card_type: button
-              button_type: slider
-              icon: mdi:lightbulb
-              name: Lampe 2
-              entity: light.lampe_2
-              min_value: 0
-              max_value: 100
-              step: 1
-              allow_light_slider_to_0: true
-              tap_action:
-                action: perform-action
-                perform_action: light.toggle
-                target:
-                  entity_id: light.lampe_2
-              rows: "1.2"
-              sub_button:
-                - icon: mdi:power
-                  show_background: false
-                  show_state: false
-                  tap_action:
-                    action: perform-action
-                    perform_action: light.toggle
-                    target:
-                      entity_id: light.lampe_2
-              card_mod:
-                style: |
-                  .bubble {
-                    position: relative;
-                  }
-                  .bubble-button-background {
-                    background: rgb(0, 0, 0, 0.6) !important;
-                  }
-                  .bubble-button-card-container {
-                    background: transparent !important;
-                    box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                    border-radius: 30px !important;
-                  }
-                  .bubble-icon {
-                    opacity: 1 !important;
-                  }
-                  .bubble-icon-container {
-                    background-color: rgb(70, 70, 70, 0.4) !important;
-                    box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-                  }
-                  .bubble-icon-container::before {
-                    content: "";
-                    position: absolute;
-                    inset: 0px;
-                    border-radius: 30px !important;
-                    padding: 1px;
-                    background: linear-gradient(
-                      140deg,
-                      rgba(170, 170, 170, 0.7) 10%,
-                      rgba(0, 0, 0, 0) 70%
-                    );
-                    -webkit-mask:
-                     linear-gradient(#000 0 0) content-box,
-                      linear-gradient(#000 0 0);
-                    -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-                    pointer-events: none;
-                    z-index: 2;
-                  }
-                  .bubble-background::before {
-                    content: "";
-                    position: absolute;
-                    inset: 0px;
-                    border-radius: 30px !important;
-                    padding: 1px;
-                    background: linear-gradient(
-                      160deg,
-                      rgba(170, 170, 170, 0.9) 10%,
-                      rgba(0, 0, 0, 0) 60%,
-                      rgba(180, 180, 180, 0) 90%
-                    );
-                    -webkit-mask:
-                      linear-gradient(#000 0 0) content-box,
-                      linear-gradient(#000 0 0);
-                    -webkit-mask-composite: xor;
-                    mask-composite: exclude;
-                    pointer-events: none;
-                    z-index: 2;
-                  }
-        - type: custom:bubble-card
-          card_type: button
-          button_type: slider
-          icon: mdi:lightbulb
-          name: Lampe 3
-          entity: light.lampe_3
-          min_value: 0
-          max_value: 100
-          step: 1
-          allow_light_slider_to_0: true
-          tap_action:
-            action: perform-action
-            perform_action: light.toggle
-            target:
-              entity_id: light.lampe_3
-          rows: "1.2"
-          sub_button:
-            - icon: mdi:power
-              show_background: false
-              show_state: false
-              tap_action:
-                action: perform-action
-                perform_action: light.toggle
-                target:
-                  entity_id: light.lampe_3
-          card_mod:
-            style: |
-              .bubble {
-                position: relative;
-              }
-              .bubble-button-background {
-                    background: rgb(0, 0, 0, 0.6) !important;
-                  }
-                  .bubble-button-card-container {
-                    background: transparent !important;
-                    box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                    border-radius: 30px !important;
-                  }
-              .bubble-icon {
-                opacity: 1 !important;
-              }
-              .bubble-icon-container {
-                background-color: rgb(70, 70, 70, 0.4) !important;
-                box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-              }
-              .bubble-icon-container::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  140deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 60%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-              .bubble-background::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  170deg,
-                  rgba(170, 170, 170, 0.9) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-        - type: custom:mod-card
-          card_mod:
-            style: |
-              ha-card {
-                background-color: rgba(10, 10, 10, 0.4);
-                border-radius: 30px;
-                padding: 0px;
-                backdrop-filter: blur(0px);
-                box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-                display: flex;
-                justify-content: center;
-                margin-left: 30px;
-                margin-right: 30px;
-                margin-bottom: 4px;
-              }
-              ha-card::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  167deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 60%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-          card:
-            type: vertical-stack
-            cards:
-              - type: horizontal-stack
-                cards:
-                  - type: custom:button-card
-                    name: Scénario 1
-                    icon: mdi:palette
-                    layout: icon_name
-                    tap_action:
-                      action: call-service
-                      service: hue.activate_scene
-                      data:
-                        entity_id: scene.scenario_1
-                    styles:
-                      card:
-                        - background-color: transparent
-                        - box-shadow: none
-                        - border: none
-                        - padding: 12px 0px
-                        - width: 120px
-                        - text-align: center
-                        - margin-left: "-10px"
-                      name:
-                        - color: white
-                        - font-size: 13px
-                        - font-weight: bold
-                      icon:
-                        - color: gray
-                        - width: 23px
-                        - height: 23px
-                  - type: custom:button-card
-                    name: Scénario 2
-                    icon: mdi:palette
-                    layout: icon_name
-                    tap_action:
-                      action: call-service
-                      service: hue.activate_scene
-                      data:
-                        entity_id: scene.scenario_2
-                    styles:
-                      card:
-                        - background-color: transparent
-                        - box-shadow: none
-                        - border: none
-                        - padding: 12px 0px
-                        - width: 120px
-                        - text-align: center
-                        - margin-left: "-10px"
-                      name:
-                        - color: white
-                        - font-size: 13px
-                        - font-weight: bold
-                      icon:
-                        - color: gray
-                        - width: 23px
-                        - height: 23px
-              - type: horizontal-stack
-                cards:
-                  - type: custom:button-card
-                    name: Scénario 3
-                    icon: mdi:palette
-                    layout: icon_name
-                    tap_action:
-                      action: call-service
-                      service: hue.activate_scene
-                      data:
-                        entity_id: scene.scenario_3
-                    styles:
-                      card:
-                        - background-color: transparent
-                        - box-shadow: none
-                        - border: none
-                        - padding: 12px 0px
-                        - width: 120px
-                        - text-align: center
-                        - margin-top: "-12px"
-                        - margin-left: 50px
-                      name:
-                        - color: white
-                        - font-size: 13px
-                        - font-weight: bold
-                      icon:
-                        - color: gray
-                        - width: 23px
-                        - height: 23px
-  - type: custom:mod-card
-    card_mod:
-      style: |
-        ha-card {
-          background-color: rgba(90, 90, 90, 0.2);
-          border-radius: 40px;
-          padding: 12px;
-          backdrop-filter: blur(3px);
-          box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-        }
-        ha-card::before {
-          content: "";
-          position: absolute;
-          inset: 0px;
-          border-radius: 40px !important;
-          padding: 1px;
-          background: linear-gradient(
-            135deg,
-            rgba(170, 170, 170, 0.7) 0%,
-            rgba(0, 0, 0, 0) 60%
-          );
-          -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-          z-index: 2;
-        }
-    card:
-      type: vertical-stack
-      cards:
-        - type: horizontal-stack
-          cards:
-            - type: custom:bubble-card
-              card_type: button
-              button_type: name
-              name: V O L E T ( S )
-              icon: mdi:window-shutter
-              sub_button: []
-              styles: |-
-                :host {
-                  --bubble-main-background-color: transparent !important;
-                  --bubble-icon-background-color: transparent !important;
-                  --bubble-box-shadow: none !important;
-                  --bubble-icon-color: rgb(200, 200, 220) !important;
-                }
-                .bubble-name {
-                  color: rgb(200, 200, 200) !important;
-                }
-                .bubble-state {
-                  color: rgb(150, 150, 150) !important;
-                }
-              grid_options:
-                columns: 8
-                rows: auto
-              show_icon: true
-              button_action:
-                tap_action:
-                  action: none
-                double_tap_action:
-                  action: none
-                hold_action:
-                  action: none
-        - type: custom:bubble-card
-          card_type: button
-          entity: cover.volet_1
-          button_type: slider
-          name: Volet 1
-          force_icon: false
-          show_state: true
-          show_last_changed: false
-          show_last_updated: false
-          show_attribute: true
-          attribute: current_position
-          icon: mdi:window-shutter-open
-          button_action: {}
-          card_mod:
-            style: |
-              .bubble {
-                position: relative;
-              }
-              .bubble-button-background {
-                background: rgb(0, 0, 0, 0.6) !important;
-              }
-              .bubble-button-card-container {
-                background: transparent !important;
-                box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                border-radius: 30px !important;
-              }
-              .bubble-icon {
-                opacity: 1 !important;
-              }
-              .bubble-icon-container {
-                background-color: rgb(70, 70, 70, 0.4) !important;
-                box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-              }
-              .bubble-icon-container::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  140deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-              .bubble-background::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  174deg,
-                  rgba(170, 170, 170, 0.9) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-        - type: custom:mod-card
-          card_mod:
-            style: |
-              ha-card {
-                background-color: rgba(10, 10, 10, 0.4);
-                border-radius: 30px;
-                padding: 0px;
-                backdrop-filter: blur(0px);
-                box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-                display: flex;
-                justify-content: center;
-                margin-left: 30px;
-                margin-right: 30px;
-                margin-bottom: 4px;
-              }
-          card:
-            type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                name: Ouvrir
-                icon: mdi:arrow-up
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.open_cover
-                  target:
-                    entity_id: cover.volet_1
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 15px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                    - margin-right: "-40px"
-                    - margin-left: "-12px"
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 0px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-              - type: custom:button-card
-                name: Stop
-                icon: mdi:stop
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.stop_cover
-                  target:
-                    entity_id: cover.volet_1
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 25px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                    - margin-right: "-40px"
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 8px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-              - type: custom:button-card
-                name: Fermer
-                icon: mdi:arrow-down
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.close_cover
-                  target:
-                    entity_id: cover.volet_1
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 15px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 8px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-        - type: custom:bubble-card
-          card_type: empty-column
-          rows: "1"
-        - type: custom:bubble-card
-          card_type: button
-          entity: cover.volet_2
-          button_type: slider
-          name: Volet 2
-          force_icon: false
-          show_state: true
-          show_last_changed: false
-          show_last_updated: false
-          show_attribute: true
-          attribute: current_position
-          icon: mdi:window-shutter-open
-          button_action: {}
-          card_mod:
-            style: |
-              .bubble {
-                position: relative;
-              }
-              .bubble-button-background {
-                background: rgb(0, 0, 0, 0.6) !important;
-              }
-              .bubble-button-card-container {
-                background: transparent !important;
-                box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
-                border-radius: 30px !important;
-              }
-              .bubble-icon {
-                opacity: 1 !important;
-              }
-              .bubble-icon-container {
-                background-color: rgb(70, 70, 70, 0.4) !important;
-                box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-              }
-              .bubble-icon-container::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  140deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-              .bubble-background::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  174deg,
-                  rgba(170, 170, 170, 0.9) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-        - type: custom:mod-card
-          card_mod:
-            style: |
-              ha-card {
-                background-color: rgba(10, 10, 10, 0.4);
-                border-radius: 30px;
-                padding: 0px;
-                backdrop-filter: blur(0px);
-                box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-                display: flex;
-                justify-content: center;
-                margin-left: 30px;
-                margin-right: 30px;
-                margin-bottom: 4px;
-              }
-          card:
-            type: horizontal-stack
-            cards:
-              - type: custom:button-card
-                name: Ouvrir
-                icon: mdi:arrow-up
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.open_cover
-                  target:
-                    entity_id: cover.volet_2
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 15px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                    - margin-right: "-40px"
-                    - margin-left: "-12px"
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 0px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-              - type: custom:button-card
-                name: Stop
-                icon: mdi:stop
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.stop_cover
-                  target:
-                    entity_id: cover.volet_2
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 25px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                    - margin-right: "-40px"
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 8px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-              - type: custom:button-card
-                name: Fermer
-                icon: mdi:arrow-down
-                layout: icon_name
-                tap_action:
-                  action: perform-action
-                  perform_action: cover.close_cover
-                  target:
-                    entity_id: cover.volet_2
-                styles:
-                  card:
-                    - background-color: transparent
-                    - box-shadow: none
-                    - border: none
-                    - padding: 0px 15px
-                    - width: 110px
-                    - text-align: left
-                    - margin-top: 12px
-                    - margin-bottom: 12px
-                  name:
-                    - color: white
-                    - font-size: 14px
-                    - font-weight: bold
-                    - padding-left: 8px
-                  icon:
-                    - color: gray
-                    - width: 24px
-                    - height: 24px
-                    - vertical-align: middle
-  - type: custom:mod-card
-    card_mod:
-      style: |
-        ha-card {
-          background-color: rgba(90, 90, 90, 0.2);
-          border-radius: 40px;
-          padding: 12px;
-          backdrop-filter: blur(3px);
-          box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-        }
-        ha-card::before {
-          content: "";
-          position: absolute;
-          inset: 0px;
-          border-radius: 40px !important;
-          padding: 1px;
-          background: linear-gradient(
-            155deg,
-            rgba(170, 170, 170, 0.7) 0%,
-            rgba(0, 0, 0, 0) 60%
-          );
-          -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-          z-index: 2;
-        }
-    card:
-      type: vertical-stack
-      cards:
-        - type: horizontal-stack
-          cards:
-            - type: custom:bubble-card
-              card_type: button
-              button_type: name
-              name: P R I S E ( S )
-              icon: mdi:power-socket-fr
-              sub_button: []
-              styles: |-
-                :host {
-                  --bubble-main-background-color: transparent !important;
-                  --bubble-icon-background-color: transparent !important;
-                  --bubble-box-shadow: none !important;
-                  --bubble-icon-color: rgb(200, 200, 220) !important;
-                }
-                .bubble-name {
-                  color: rgb(200, 200, 200) !important;
-                }
-                .bubble-state {
-                  color: rgb(150, 150, 150) !important;
-                }
-              grid_options:
-                columns: 8
-                rows: auto
-              show_icon: true
-              button_action:
-                tap_action:
-                  action: none
-                double_tap_action:
-                  action: none
-                hold_action:
-                  action: none
-              tap_action:
-                action: none
-              double_tap_action:
-                action: none
-              hold_action:
-                action: none
-              card_mod: null
-            - type: custom:mod-card
-              style: |
-                ha-card {
-                  display: flex;
-                  justify-content: flex-end;
-                  gap: 12px;
-                  margin-top: 0px;
-                  padding: 6px 6px;
-                  background: none;
-                  box-shadow: none;
-                }
-              card:
-                type: horizontal-stack
-                cards:
-                  - type: custom:button-card
-                    name: Graphique(s)
-                    show_icon: false
-                    custom_fields:
-                      glow_icon: |
-                        <div style="
-                          position: relative;
-                          width: 44px;
-                          height: 44px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        ">
-                          <ha-icon icon="mdi:chart-bell-curve-cumulative" style="
-                            position: absolute;
-                            width: 20px;
-                            height: 20px;
-                            color: rgb(250, 160, 0);
-                            z-index: 1;
-                          "></ha-icon>
-                        </div>
-                    tap_action:
-                      action: navigate
-                      navigation_path: "#graphiques_prises_pièce_1"
-                    double_tap_action:
-                      action: navigate
-                      navigation_path: "#graphiques_prises_pièce_1"
-                    hold_action:
-                      action: navigate
-                      navigation_path: "#graphiques_prises_pièce_1"
-                    styles:
-                      card:
-                        - background-color: rgb(10, 10, 10, 0.2);
-                        - border: none
-                        - border-radius: 50px
-                        - padding: 0px 0px
-                        - margin: auto
-                        - width: fit-content
-                        - display: flex
-                        - align-items: center
-                        - justify-content: center
-                        - text-align: center
-                        - padding-right: 6px;
-                        - gap: 6px
-                        - backdrop-filter: blur(5px);
-                        - box-shadow: 2px 3px 7px rgba(0,0,0,0.6);
-                      grid:
-                        - grid-template-areas: "\"glow_icon n\""
-                        - grid-template-columns: auto auto
-                        - align-items: center
-                        - justify-content: center
-                      custom_fields:
-                        glow_icon:
-                          - display: flex
-                          - justify-content: center
-                          - align-items: center
-                      name:
-                        - font-size: 12px
-                        - color: white
-                        - white-space: nowrap
-                        - overflow: visible
-                        - margin-right: 6px
-                        - font-weight: bold
-                    extra_styles: |
-                      #card {
-                        position: relative;
-                      }
-                      #card::before {
-                        content: "";
-                        position: absolute;
-                        inset: 0;
-                        border-radius: 50px;
-                        padding: 1px;
-                        background: linear-gradient(
-                          165deg,
-                          rgba(170, 170, 170, 0.7) 10%,
-                          rgba(0, 0, 0, 0) 60%
-                        );
-                        -webkit-mask:
-                          linear-gradient(#fff 0 0) content-box,
-                          linear-gradient(#fff 0 0);
-                        -webkit-mask-composite: xor;
-                        mask-composite: exclude;
-                        pointer-events: none;
-                      }
-        - type: custom:bubble-card
-          card_type: button
-          button_type: switch
-          entity: switch.prise
-          name: Prise
-          icon: mdi:power-socket-fr
-          min_value: 0
-          max_value: 100
-          step: 1
-          use_accent_color: false
-          allow_light_slider_to_0: true
-          tap_action:
-            action: perform-action
-            perform_action: switch.toggle
-            target:
-              entity_id: switch.prise
-          double_tap_action:
-            action: none
-          hold_action:
-            action: none
-          button_action:
-            tap_action:
-              action: perform-action
-              perform_action: switch.toggle
-              target:
-                entity_id: switch.prise
-            hold_action:
-              action: none
-            double_tap_action:
-              action: none
-          rows: "1.2"
-          sub_button:
-            - entity: light.spot_3
-              show_attribute: false
-              show_icon: true
-              show_state: false
-              show_last_updated: false
-              show_background: false
-              show_name: false
-              show_last_changed: false
-              light_background: true
-              icon: mdi:power
-              tap_action:
-                action: none
-              double_tap_action:
-                action: none
-              hold_action:
-                action: none
-          show_state: true
-          show_name: true
-          styles: |
-            .bubble-button-background {
-              background: transparent !important
-              opacity: 0.5 !important;
-              background-color: ${state === 'on' ? 'rgb(250, 160, 0, 0.4)' : 'rgb(0, 0, 0, 0.6)'} !important;
-            }
-            .bubble-icon {
-              color: rgb(200, 200, 200) !important;
-              opacity: 1 !important;
-            }
-          card_mod:
-            style: |
-              .bubble {
-                position: relative;
-              }
-              .bubble-button-card-container {
-                background: transparent !important;
-                box-shadow: 2px 3px 7px rgba(0,0,0,0.6) !important;
-                border-radius: 30px !important;
-              }
-              .bubble-icon-container {
-                background-color: rgb(70, 70, 70, 0.4) !important;
-                box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
-              }
-              .bubble-icon-container::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  140deg,
-                  rgba(170, 170, 170, 0.7) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-              .bubble-background::before {
-                content: "";
-                position: absolute;
-                inset: 0px;
-                border-radius: 30px !important;
-                padding: 1px;
-                background: linear-gradient(
-                  174deg,
-                  rgba(170, 170, 170, 0.9) 10%,
-                  rgba(0, 0, 0, 0) 70%,
-                  rgba(180, 180, 180, 0) 90%
-                );
-                -webkit-mask:
-                  linear-gradient(#000 0 0) content-box,
-                  linear-gradient(#000 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                z-index: 2;
-              }
-        - type: custom:entity-progress-card
-          name: Puissance
-          bar_size: small
-          layout: horizontal
-          bar_color: red
-          min_value: 0
-          theme: optimal_when_low
-          entity: sensor.prise
-          decimal: 0
-          max_value: 3680
-          tap_action:
-            action: none
-          double_tap_action:
-            action: none
-          hold_action:
-            action: none
-          hide:
-            - name
-            - icon
-          grid_options:
-            columns: 12
-            rows: 1
-          card_mod:
-            style: |
-              ha-card {
-                border: none;
-                border-radius: 30px;
-                background: none;
-                margin-top: -25px;
-                transform: scale(0.9);
-              }
-  - type: custom:mod-card
-    card_mod:
-      style: |
-        ha-card {
-          background-color: rgba(90, 90, 90, 0.2);
-          border-radius: 40px;
-          padding: 12px;
-          backdrop-filter: blur(3px);
-          box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
-        }
-        ha-card::before {
-          content: "";
-          position: absolute;
-          inset: 0px;
-          border-radius: 40px !important;
-          padding: 1px;
-          background: linear-gradient(
-            162deg,
-            rgba(170, 170, 170, 0.7) 0%,
-            rgba(0, 0, 0, 0) 60%
-          );
-          -webkit-mask:
-            linear-gradient(#000 0 0) content-box,
-            linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor;
-          mask-composite: exclude;
-          pointer-events: none;
-          z-index: 2;
-        }
-    card:
-      type: vertical-stack
-      cards:
-        - type: custom:bubble-card
-          card_type: button
-          button_type: name
-          name: B A T T E R I E ( S )
-          icon: mdi:battery-60
-          sub_button: []
-          styles: |-
-            :host {
-              --bubble-main-background-color: transparent !important;
-              --bubble-icon-background-color: transparent !important;
-              --bubble-box-shadow: none !important;
-              --bubble-icon-color: rgb(200, 200, 220) !important;
-            }
-            .bubble-name {
-              color: rgb(200, 200, 200) !important;
-            }
-            .bubble-state {
-              color: rgb(150, 150, 150) !important;
-            }
-          grid_options:
-            columns: 8
-            rows: auto
-          show_icon: true
-          button_action:
-            tap_action:
-              action: none
-            double_tap_action:
-              action: none
-            hold_action:
-              action: none
-          tap_action:
-            action: none
-          double_tap_action:
-            action: none
-          hold_action:
-            action: none
-        - type: custom:entity-progress-card
-          entity: sensor.votre_appareil_a_batterie
-          name: Interrupteur connecté
-          bar_size: small
-          layout: horizontal
-          bar_color: red
-          min_value: 0
-          max_value: 100
-          force_circular_background: true
-          theme: optimal_when_high
-          grid_options:
-            columns: 12
-            rows: 1
-          card_mod:
-            style: >
-              ha-card {
-                border: none;
-                border-radius: 30px;
-                box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6);
-
-                {% set val = states('sensor.votre_appareil_a_batterie') | int %}
-
-                {% if val < 20 %}
-                  background: rgba(255, 0, 0, 0.3);
-                {% elif val < 50 %}
-                  background: rgba(255, 140, 0, 0.3);
-                {% elif val < 80 %}
-                  background: rgba(255, 255, 0, 0.3);
-                {% else %}
-                  background: rgba(10, 10, 10, 0.3);
-                {% endif %}
-              }
-               .icon {
-                {% set val = states('sensor.votre_appareil_a_batterie') | int %}
-                {% if val < 20 %}
-                  animation: blink-fast 0.5s linear infinite !important;
-                {% elif val < 40 %}
-                  animation: blink-slow 1.5s linear infinite !important;
-                {% endif %}
-              }
-
-              /* Permet de faire clignoter lentement ou rapidement l'icone en
-              fonction de sa batterie */ @keyframes blink-fast {
-                0%   { opacity: 1; }
-                50%  { opacity: 0.2; }
-                100% { opacity: 1; }
-              }
-
-
+              # Permet de faire clignoter lentement l'icone en fonction de sa batterie
               @keyframes blink-slow {
                 0%   { opacity: 1; }
                 50%  { opacity: 0.2; }
