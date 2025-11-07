@@ -1,0 +1,321 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#batteries_1"
+    name: Pièce 1
+    show_header: true
+    button_type: name
+    margin: 7px
+    margin_top_mobile: 160px
+    bg_opacity: "40"
+    shadow_opacity: "0"
+    bg_color: rgb(120. 110. 110)
+    button_action: {}
+    show_name: true
+    show_icon: true
+    bg_blur: "4"
+    backdrop_blur: "0"
+    icon: mdi:bed-king-outline
+    sub_button:
+      - icon: mdi:battery-20
+        state_background: false
+        show_background: false
+        visibility:
+          - condition: numeric_state
+            entity: sensor.votre_appareil_a_batterie
+            below: 40
+            above: 20
+      - icon: mdi:battery-20
+        state_background: false
+        show_background: false
+        visibility:
+          - condition: numeric_state
+            entity: sensor.votre_appareil_a_batterie
+            below: 21
+        hide_when_parent_unavailable: false
+    styles: |-
+      .bubble-icon-container {
+        box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+      }
+      .bubble-icon {
+        color: rgb(200, 200, 200) !important;
+        opacity: 1 !important;
+      }
+      .bubble-icon-container {
+        background-color: rgb(200, 200, 200, 0.1) !important;
+      }
+      .bubble-button-card-container {
+        backdrop-filter: blur(5px) !important;
+        box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6) !important;
+        border-radius: 30px !important;
+        background-color: rgba(10, 10, 10, 0.3) !important;
+      }
+      .bubble-sub-button-1 {
+        color: rgb(255, 130, 0) !important;
+        filter: drop-shadow(0 0 6px rgba(255, 130, 0, 1));
+      }
+      .bubble-sub-button-2 {
+        color: rgb(255, 40, 0) !important;
+        filter: drop-shadow(0 0 6px rgba(255, 40, 0, 1));
+        animation: blink 1.5s linear infinite !important;
+      }
+      @keyframes blink {
+        0%   { opacity: 1; }
+        50%  { opacity: 0.2; }
+        100% { opacity: 1; }
+      }
+      .bubble-icon-container::before {
+        content: "";
+        position: absolute;
+        inset: 0px;
+        border-radius: 30px !important;
+        padding: 1px;
+        background: linear-gradient(
+          140deg,
+          rgba(170, 170, 170, 0.7) 10%,
+          rgba(0, 0, 0, 0) 70%
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .bubble-background::before {
+        content: "";
+        position: absolute;
+        inset: 0px;
+        border-radius: 30px !important;
+        padding: 1px;
+        background: linear-gradient(
+          172deg,
+          rgba(170, 170, 170, 0.7) 10%,
+          rgba(0, 0, 0, 0) 60%
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        z-index: 2;
+      }
+  - type: custom:bubble-card
+    card_type: empty-column
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.votre_appareil_a_batterie
+        below: 40
+    card:
+      type: custom:mod-card
+      card_mod:
+        style: |
+          ha-card {
+            background-color: rgba(90, 90, 90, 0.2);
+            border-radius: 40px;
+            padding: 12px;
+            backdrop-filter: blur(3px);
+            box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
+          }
+          ha-card::before {
+            content: "";
+            position: absolute;
+            inset: 0px;
+            border-radius: 40px !important;
+            padding: 1px;
+            background: linear-gradient(
+              162deg,
+              rgba(170, 170, 170, 0.7) 0%,
+              rgba(0, 0, 0, 0) 60%
+            );
+            -webkit-mask:
+              linear-gradient(#000 0 0) content-box,
+              linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 2;
+          }
+      card:
+        type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                button_type: name
+                name: B A T T E R I E ( S )
+                icon: mdi:battery-60
+                sub_button: []
+                styles: |-
+                  :host {
+                    --bubble-main-background-color: transparent !important;
+                    --bubble-icon-background-color: transparent !important;
+                    --bubble-box-shadow: none !important;
+                    --bubble-icon-color: rgb(200, 200, 220) !important;
+                  }
+                  .bubble-name {
+                    color: rgb(200, 200, 200) !important;
+                  }
+                  .bubble-state {
+                    color: rgb(150, 150, 150) !important;
+                  }
+                grid_options:
+                  columns: 8
+                  rows: auto
+                show_icon: true
+                button_action:
+                  tap_action:
+                    action: none
+                  double_tap_action:
+                    action: none
+                  hold_action:
+                    action: none
+                tap_action:
+                  action: none
+                double_tap_action:
+                  action: none
+                hold_action:
+                  action: none
+          - type: vertical-stack
+            cards:
+              - type: custom:entity-progress-card
+                bar_size: small
+                layout: horizontal
+                bar_color: red
+                min_value: 0
+                force_circular_background: true
+                theme: optimal_when_high
+                entity: sensor.votre_appareil_a_batterie
+                name: Interrupteur connecté
+                max_value: 100
+                grid_options:
+                  columns: 12
+                  rows: 1
+                card_mod:
+                  style: |
+                    ha-card {
+                      border: none;
+                      border-radius: 30px;
+                      box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6);
+                      position: relative;
+                      z-index: 1;
+
+                      {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                      {% if val < 20 %}
+                        background: rgba(255, 0, 0, 0.3);
+                      {% elif val < 50 %}
+                        background: rgba(255, 140, 0, 0.3);
+                      {% elif val < 80 %}
+                        background: rgba(255, 255, 0, 0.3);
+                      {% else %}
+                        background: rgba(10, 10, 10, 0.3);
+                      {% endif %}
+                    }
+
+                    .icon {
+                      {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                      {% if val < 20 %}
+                        animation: blink-fast 0.5s linear infinite !important;
+                      {% elif val < 40 %}
+                        animation: blink-slow 1.5s linear infinite !important;
+                      {% endif %}
+                    }
+
+                    @keyframes blink-fast {
+                      0%   { opacity: 1; }
+                      50%  { opacity: 0.2; }
+                      100% { opacity: 1; }
+                    }
+
+                    @keyframes blink-slow {
+                      0%   { opacity: 1; }
+                      50%  { opacity: 0.2; }
+                      100% { opacity: 1; }
+                    }
+                    .icon {
+                        border-radius: 50%;
+                        padding: 6px;
+                        box-shadow: 2px 3px 7px rgba(0, 0, 0, 0.6);
+                      }
+                      ha-card::before {
+                        content: "";
+                        position: absolute;
+                        inset: 0px;
+                        border-radius: 40px !important;
+                        padding: 1px;
+                        background: linear-gradient(
+                          174deg,
+                          rgba(170, 170, 170, 0.7) 0%,
+                          rgba(0, 0, 0, 0) 60%
+                        );
+                        -webkit-mask:
+                          linear-gradient(#000 0 0) content-box,
+                          linear-gradient(#000 0 0);
+                        -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                        pointer-events: none;
+                        z-index: 2;
+                      }
+                      .icon::before {
+                        content: "";
+                        position: absolute;
+                        inset: 0px;
+                        border-radius: 40px !important;
+                        padding: 1px;
+                        background: linear-gradient(
+                          147deg,
+                          rgba(170, 170, 170, 0.7) 0%,
+                          rgba(0, 0, 0, 0) 60%
+                        );
+                        -webkit-mask:
+                          linear-gradient(#000 0 0) content-box,
+                          linear-gradient(#000 0 0);
+                        -webkit-mask-composite: xor;
+                        mask-composite: exclude;
+                        pointer-events: none;
+                        z-index: 2;
+                      }
+              - type: horizontal-stack
+                cards:
+                  - type: custom:mod-card
+                    style: |
+                      hui-horizontal-stack-card {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                      }
+                    card:
+                      type: horizontal-stack
+                      cards:
+                        - type: custom:button-card
+                          name: Mineur /* Vous pouvez choisir de modifier le nom entre Mineur, Important et CRITIQUE en fonction de l'importance de l'etat de la batterie de votre appareil pour votre domicile /*
+                          show_icon: false
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          styles:
+                            card:
+                              - border-radius: 0px 0px 20px 20px
+                              - box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.5);
+                              - border: none
+                              - padding: 5px 10px
+                              - width: 120px
+                              - text-align: center
+                              - margin-top: "-14px"
+                              - background-color: rgb(10, 10, 10, 0.3)
+                                  /* En fonction de l'importance entre Mineur, Important et Critique, changez la couleur pour du jaune sur Important et rouge pour CRITIQUE /*
+                            name:
+                              - color: white
+                              - font-size: 13px
+                              - font-weight: bold
+grid_options:
+  columns: 12
+  rows: auto
