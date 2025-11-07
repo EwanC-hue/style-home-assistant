@@ -16,7 +16,7 @@ style: |
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
   }
-  /* Effet de lumière */
+  # Effet de lumière
   :host::before {
     content: "";
     position: absolute;
@@ -44,10 +44,8 @@ card:
       card_type: button
       button_type: text
       icon: mdi:bed-king-outline
-      name: Pièce 1
-      /* Remplacez par le nom de votre choix */
-      entity: sensor.prise_puissance
-      /* remplacez par votre entité pour afficher son état en dessous du nom de votre pièce */
+      name: Pièce 1 # Remplacez par le nom de votre choix
+      entity: sensor.prise_puissance # Remplacez par votre entité pour afficher son état en dessous du nom de votre pièce
       show_state: true
       show_last_changed: false
       show_attribute: true
@@ -59,7 +57,8 @@ card:
           .bubble {
             position: relative;
           }
-          /* Effet de lumière sur l'icone */
+
+          # Effet de lumière sur l'icone
           .bubble-icon-container::before {
             content: "";
             position: absolute;
@@ -93,50 +92,55 @@ card:
           .bubble-state {
             color: rgb(150, 150, 150) !important;
           }
-          /* personnalisation du sub-button en orange lors d'une batterie faible */
+
+          # personnalisation du sub-button en orange lors d'une batterie faible
           .bubble-sub-button-1 {
             color: rgb(255, 130, 0) !important;
             filter: drop-shadow(0 0 6px rgba(255, 130, 0, 1));
           }
+
           .bubble-icon {
             color: rgb(200, 200, 220) !important;
             opacity: 1 !important;
           }
-          /* personnalisation du sub-button en rouge lors d'une batterie très faible */
+
+          # personnalisation du sub-button en rouge lors d'une batterie très faible
           .bubble-sub-button-2 {
             color: rgb(255, 0, 0) !important;
             filter: drop-shadow(0 0 6px rgba(255, 0, 0, 1));
             animation: blink 1.5s linear infinite !important;
           }
+
           .bubble-icon-container {
             box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
           }
-          /* permet de faire clignoter l'icone sub-button en rouge */
+
+          # permet de faire clignoter l'icone sub-button en rouge
           @keyframes blink {
             0%  { opacity: 1; }
             50% { opacity: 0.2; }
             100% { opacity: 1; }
           }
+
       button_action:
         tap_action:
           action: navigate
-          navigation_path: "#votre_pièce"
-          /* Sous tout les "#votre_piece" modifiez le nom par celui de votre pop-up que vous aurez crée */
+          navigation_path: "#votre_pièce" # Sous tous les #votre_piece, modifiez le nom par celui de votre pop-up que vous aurez créé.
         double_tap_action:
           action: navigate
-          navigation_path: "#votre_pièce"
+          navigation_path: "#votre_piece"
         hold_action:
           action: navigate
-          navigation_path: "#votre_pièce"
+          navigation_path: "#votre_piece"
       tap_action:
         action: navigate
-        navigation_path: "#votre_pièce"
+        navigation_path: "#votre_piece"
       double_tap_action:
         action: navigate
-        navigation_path: "#votre_pièce"
+        navigation_path: "#votre_piece"
       hold_action:
         action: navigate
-        navigation_path: "#votre_pièce"
+        navigation_path: "#votre_piece"
       sub_button:
         - icon: mdi:battery-20
           state_background: false
@@ -149,8 +153,7 @@ card:
           hide_when_parent_unavailable: false
           tap_action:
             action: navigate
-            navigation_path: "#batteries_1"
-            /* Afficher une carte pop-up facultative vous permettant de voir quels appareils ont une batterie faible lorsque vous appuyez sur l'icone sub-button */
+            navigation_path: "#batteries_1" # Afficher une carte pop-up facultative vous permettant de voir quels appareils ont une batterie faible lorsque vous appuyez sur l'icone sub-button
           double_tap_action:
             action: navigate
             navigation_path: "#batteries_1"
@@ -177,7 +180,7 @@ card:
                   entity: sensor.votre_appareil_a_batterie
                   below: 21
 
-      /* le mod-card vous permet de centrer les icones interactives en dessous de la carte principal */
+      # le mod-card vous permet de centrer les icones interactives en dessous de la carte principal
     - type: custom:mod-card
       style: |
         ha-card {
@@ -193,7 +196,7 @@ card:
         type: horizontal-stack
         cards:
 
-          /* Premier bouton */
+          # Premier bouton
           - type: custom:button-card
             icon: mdi:lightbulb-outline
             entity: light.votre_lampe
@@ -279,16 +282,15 @@ card:
                   padding: 0;
                   border: none !important;
                 }
-          /* Deuxieme bouton */
+            # Deuxieme bouton
           - type: custom:button-card
             icon: mdi:power-socket-fr
-            entity: switch.prise
-            /* Remplacez le nom par votre appareil */
+            entity: switch.prise # Remplacez par votre appareil
             tap_action:
               action: perform-action
               perform_action: switch.toggle
               target:
-                entity_id: switch.prise
+                entity_id: switch.prise # Remplacez par votre appareil
             show_name: false
             show_state: false
             styles:
