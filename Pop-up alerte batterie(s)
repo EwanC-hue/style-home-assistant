@@ -23,7 +23,7 @@ cards:
         show_background: false
         visibility:
           - condition: numeric_state
-            entity: sensor.votre_appareil_a_batterie
+            entity: sensor.votre_appareil_a_batterie # Remplacez par votre appareil
             below: 40
             above: 20
       - icon: mdi:battery-20
@@ -31,7 +31,7 @@ cards:
         show_background: false
         visibility:
           - condition: numeric_state
-            entity: sensor.votre_appareil_a_batterie
+            entity: sensor.votre_appareil_a_batterie # Remplacez par votre appareil
             below: 21
         hide_when_parent_unavailable: false
     styles: |-
@@ -108,7 +108,7 @@ cards:
   - type: conditional
     conditions:
       - condition: numeric_state
-        entity: sensor.votre_appareil_a_batterie
+        entity: sensor.votre_appareil_a_batterie # Remplacez par votre appareil
         below: 40
     card:
       type: custom:mod-card
@@ -190,7 +190,7 @@ cards:
                 min_value: 0
                 force_circular_background: true
                 theme: optimal_when_high
-                entity: sensor.votre_appareil_a_batterie
+                entity: sensor.votre_appareil_a_batterie # Remplacez par votre appareil
                 name: Interrupteur connecté
                 max_value: 100
                 grid_options:
@@ -205,7 +205,7 @@ cards:
                       position: relative;
                       z-index: 1;
 
-                      {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                      {% set val = states('sensor.votre_appareil_a_batterie') | int %} # Remplacez par votre appareil
                       {% if val < 20 %}
                         background: rgba(255, 0, 0, 0.3);
                       {% elif val < 50 %}
@@ -218,7 +218,7 @@ cards:
                     }
 
                     .icon {
-                      {% set val = states('sensor.votre_appareil_a_batterie') | int %}
+                      {% set val = states('sensor.votre_appareil_a_batterie') | int %} # Remplacez par votre appareil
                       {% if val < 20 %}
                         animation: blink-fast 0.5s linear infinite !important;
                       {% elif val < 40 %}
@@ -293,7 +293,7 @@ cards:
                       type: horizontal-stack
                       cards:
                         - type: custom:button-card
-                          name: Mineur /* Vous pouvez choisir de modifier le nom entre Mineur, Important et CRITIQUE en fonction de l'importance de l'etat de la batterie de votre appareil pour votre domicile /*
+                          name: Mineur # Vous pouvez choisir de modifier le nom entre Mineur, Important et CRITIQUE en fonction de l'importance de l'etat de la batterie de votre appareil pour votre domicile
                           show_icon: false
                           tap_action:
                             action: none
@@ -310,8 +310,7 @@ cards:
                               - width: 120px
                               - text-align: center
                               - margin-top: "-14px"
-                              - background-color: rgb(10, 10, 10, 0.3)
-                                  /* En fonction de l'importance entre Mineur, Important et Critique, changez la couleur pour du jaune sur Important et rouge pour CRITIQUE /*
+                              - background-color: rgb(10, 10, 10, 0.3)  # En fonction de l'importance entre Mineur, Important et Critique, changez la couleur pour du jaune sur Important et rouge pour CRITIQUE
                             name:
                               - color: white
                               - font-size: 13px
