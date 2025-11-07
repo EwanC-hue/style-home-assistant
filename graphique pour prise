@@ -2,7 +2,7 @@ type: vertical-stack
 cards:
   - type: custom:bubble-card
     card_type: pop-up
-    hash: "#graphiques_prise"
+    hash: "#graphiques_prise" # Nom de votre pop-up
     name: Graphique(s)
     show_header: true
     button_type: name
@@ -74,7 +74,7 @@ cards:
         }
     close_action:
       action: navigate
-      navigation_path: "#piece_1"
+      navigation_path: "#piece_1" # Vous ramène à page précédente lors de la fermeture du pop-up
   - type: custom:bubble-card
     card_type: empty-column
     rows: "1"
@@ -185,7 +185,7 @@ cards:
                   colors: "#ffffff"
                   fontSize: 12px
           series:
-            - entity: sensor.prise_1
+            - entity: sensor.prise_1 # Remplacez par votre appareil
               name: 24h glissantes
               type: line
               color: orange
@@ -228,7 +228,7 @@ cards:
     icon: mdi:arrow-left
     tap_action:
       action: navigate
-      navigation_path: "#piece_1"
+      navigation_path: "#piece_1" # Vous ramène à votre page précédente lorsque vous appuyez sur le bouton.
     double_tap_action:
       action: none
     hold_action:
