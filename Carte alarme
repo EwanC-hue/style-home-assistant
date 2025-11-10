@@ -1,0 +1,509 @@
+type: custom:mod-card
+card_mod:
+  style: |
+    ha-card {
+      background-color: rgba(90, 90, 90, 0.2);
+      border-radius: 40px;
+      padding: 16px;
+      backdrop-filter: blur(3px);
+      box-shadow: 2px 4px 9px rgba(0,0,0,0.5);
+    }
+    ha-card::before {
+      content: "";
+      position: absolute;
+      inset: 0px;
+      border-radius: 40px !important;
+      padding: 1px;
+      background: linear-gradient(
+        145deg,
+        rgba(170, 170, 170, 0.7) 0%,
+        rgba(0, 0, 0, 0) 50%
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 2;
+    }
+card:
+  type: vertical-stack
+  cards:
+    - type: custom:bubble-card
+      card_type: button
+      button_type: name
+      name: A L A R M E
+      icon: mdi:shield-outline
+      sub_button: []
+      styles: |-
+        :host {
+          --bubble-main-background-color: transparent !important;
+          --bubble-icon-background-color: transparent !important;
+          --bubble-box-shadow: none !important;
+          --bubble-icon-color: rgb(200, 200, 220) !important;
+        }
+        .bubble-name {
+          color: rgb(200, 200, 200) !important;
+        }
+        .bubble-state {
+          color: rgb(150, 150, 150) !important;
+        }
+        .bubble-icon {
+          color: rgb(255, 255, 255) !important;
+        }
+      grid_options:
+        columns: 8
+        rows: auto
+      show_icon: true
+      button_action:
+        tap_action:
+          action: none
+        double_tap_action:
+          action: none
+        hold_action:
+          action: none
+      tap_action:
+        action: none
+      double_tap_action:
+        action: none
+      hold_action:
+        action: none
+    - type: custom:mod-card
+      card_mod:
+        style: | # Remplacez toutes les entités par votre alarme
+          ha-card {
+            {% if is_state('alarm_control_panel.votre_alarme', 'armed_away') %}
+              background: linear-gradient(160deg, rgba(255, 0, 0,0.2), rgb(255, 100, 0,0.2));
+            {% elif is_state('alarm_control_panel.votre_alarme', 'armed_home') %}
+              background: linear-gradient(160deg, rgba(255, 0, 0,0.2), rgb(255, 100, 0,0.2));
+            {% elif is_state('alarm_control_panel.votre_alarme', 'disarmed') %}
+              background: linear-gradient(160deg, rgba(0,100,200,0.2), rgba(0,200,255,0.2));
+            {% else %}
+              background: rgba(10, 10, 10, 0.2);
+            {% endif %}
+            border-radius: 30px;
+            box-shadow: 2px 4px 9px rgba(0,0,0,0.8);
+            color: white;
+            padding: 0px;
+            min-height: 101px;
+          }
+      card:
+        type: vertical-stack
+        cards:
+          - type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            entity: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+            icon: mdi:shield
+            name: Alarme
+            show_attribute: false
+            show_state: false
+            scrolling_effect: true
+            tap_action: none
+            hold_action: none
+            double_tap: none
+            sub_button: []
+            styles: |
+              ${(() => {
+                const state = hass.states['alarm_control_panel.votre_alarme'].state;
+
+                const nameElement = card.querySelector('.bubble-name');
+                if (nameElement) {
+                  nameElement.innerText =
+                    state === 'armed_home'
+                      ? 'À domicile et activé'
+                      : state === 'armed_away'
+                      ? 'À l\'extérieur et activé'
+                      : state === 'disarmed'
+                      ? 'Désactivé'
+                      : 'État inconnu';
+                }
+
+                const bg = card.querySelector('.bubble-button-background');
+                if (bg) {
+                  bg.style.backgroundImage =
+                    state === 'armed_home'
+                      ? 'linear-gradient(45deg, rgb(255, 0, 0,0.2), rgb(255, 60, 0,0.2))'
+                      : state === 'armed_away'
+                      ? 'linear-gradient(45deg, rgb(255, 0, 0,0.2), rgb(255, 60, 0,0.2))'
+                      : state === 'disarmed'
+                      ? 'linear-gradient(45deg, rgb(0, 120, 200,0.2), rgb(0, 200, 255,0.2))'
+                      : 'linear-gradient(45deg, grey, darkgrey)';
+                  bg.style.opacity = '0.85';
+                }
+
+                const icon = card.querySelector('.bubble-icon');
+                if (icon) {
+                  icon.style.color =
+                    state === 'armed_home'
+                      ? 'rgb(255, 60, 0)'
+                      : state === 'armed_away'
+                      ? 'rgb(200, 60, 0)'
+                      : state === 'disarmed'
+                      ? 'rgb(0, 200, 255)'
+                      : 'white';
+                }
+
+                return '';
+              })()}
+            card_mod:
+              style: |
+                .bubble {
+                  position: relative;
+                }
+                .bubble-button-card-container {
+                  background: transparent !important;
+                  box-shadow: 2px 4px 7px rgba(0,0,0,0.6) !important;
+                  border-radius: 30px !important;
+                }
+                  .bubble-icon {
+                  opacity: 0.8 !important;
+                }
+                .bubble-icon-container {
+                  background-color: rgb(70, 70, 70, 0.4) !important;
+                  box-shadow: 2px 1px 6px rgb(0,0,0,0.6) !important;
+                }
+                .bubble-icon-container::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0px;
+                  border-radius: 30px !important;
+                  padding: 1px;
+                  background: linear-gradient(
+                    145deg,
+                    rgba(170, 170, 170, 0.7) 0%,
+                    rgba(0, 0, 0, 0) 60%
+                  );
+                  -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  z-index: 2;
+                }
+                .bubble-background::before {
+                  content: "";
+                  position: absolute;
+                  inset: 0px;
+                  border-radius: 30px !important;
+                  padding: 1px;
+                  background: linear-gradient(
+                    174deg,
+                    rgba(170, 170, 170, 0.9) 0%,
+                    rgba(0, 0, 0, 0) 60%
+                  );
+                  -webkit-mask:
+                    linear-gradient(#000 0 0) content-box,
+                    linear-gradient(#000 0 0);
+                  -webkit-mask-composite: xor;
+                  mask-composite: exclude;
+                  pointer-events: none;
+                  z-index: 2;
+                }
+            button_action:
+              tap_action: none
+              hold_action: none
+              double_tap: none
+            rows: "1.2"
+          - type: custom:mod-card
+            style: |
+              ha-card {
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                padding: 10px 0;
+                background: none;
+                box-shadow: none;
+              }
+            card:
+              type: horizontal-stack
+              cards:
+                - type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                      show_name: false
+                      icon: mdi:shield-off-outline
+                      tap_action:
+                        action: call-service
+                        service: alarm_control_panel.alarm_disarm # Désactive votre alarme
+                        target:
+                          entity_id: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                        data:
+                          code: "votre_code" # Remplacez par votre code défini pour activer/désactiver votre alarme
+                      styles:
+                        card:
+                          - background: >
+                              [[[ if (entity.state === 'disarmed') return
+                              "rgba(0,200,255,0.3)";
+                                  return "rgba(40,40,40,0.4)"; ]]]
+                          - border-radius: 50%
+                          - width: 55px
+                          - height: 55px
+                          - display: flex
+                          - align-items: center
+                          - justify-content: center
+                          - box-shadow: 2px 1px 7px rgba(0,0,0,0.6)
+                          - backdrop-filter: blur(5px)
+                        icon:
+                          - width: 32px
+                          - height: 32px
+                          - color: rgb(180, 180, 180)
+                      card_mod:
+                        style: |
+                          :host {
+                            display: block;
+                            overflow: visible;
+                            position: relative;
+                            border-radius: 50% !important;
+                            transform-origin: center;
+                            border: none !important;
+                          }
+
+                          :host::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            border-radius: 50% !important;
+                            padding: 1px;
+                            background: linear-gradient(
+                              145deg,
+                              rgba(170, 170, 170, 0.7) 0%,
+                              rgba(0, 0, 0, 0) 50%
+                            );
+                            -webkit-mask:
+                              linear-gradient(#000 0 0) content-box,
+                              linear-gradient(#000 0 0);
+                            -webkit-mask-composite: xor;
+                            mask-composite: exclude;
+                            pointer-events: none;
+                            z-index: 2;
+                          }
+
+                          ha-card::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0px;
+                            border-radius: 50% !important;
+                            background: transparent !important;
+                            backdrop-filter: none !important; 
+                            -webkit-backdrop-filter: none !important;
+                            pointer-events: none;
+                            z-index: 0;
+                          }
+                    - type: custom:button-card
+                      show_icon: false
+                      show_name: true
+                      name: Désactivé
+                      tap_action:
+                        action: none
+                      styles:
+                        card:
+                          - background: none
+                          - box-shadow: none
+                          - border: none
+                          - width: 57px
+                          - padding-top: 4px
+                          - margin: 0 auto
+                        name:
+                          - font-size: 13px
+                          - color: white
+                          - text-align: center
+                - type: custom:button-card
+                  show_icon: false
+                  show_name: false
+                  styles:
+                    card:
+                      - background: none
+                      - border: none
+                      - width: 55px
+                      - height: 55px
+                - type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                      show_name: false
+                      icon: mdi:shield-home-outline
+                      tap_action:
+                        action: call-service
+                        service: alarm_control_panel.alarm_arm_home # Active votre alarme en mode Présence
+                        target:
+                          entity_id: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                        data:
+                          code: "votre_code" # Remplacez par votre code défini pour activer/désactiver votre alarme
+                      styles:
+                        card:
+                          - background: >
+                              [[[ if (entity.state === 'armed_home') return
+                              "rgba(255,70,0,0.3)";
+                                  return "rgba(40,40,40,0.4)"; ]]]
+                          - border-radius: 50%
+                          - width: 55px
+                          - height: 55px
+                          - display: flex
+                          - align-items: center
+                          - justify-content: center
+                          - box-shadow: 2px 1px 7px rgba(0,0,0,0.6)
+                          - backdrop-filter: blur(5px)
+                        icon:
+                          - width: 32px
+                          - height: 32px
+                          - color: rgb(180, 180, 180)
+                      card_mod:
+                        style: |
+                          :host {
+                            display: block;
+                            overflow: visible;
+                            position: relative;
+                            border-radius: 50% !important;
+                            transform-origin: center;
+                            border: none !important;
+                          }
+
+                          :host::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            border-radius: 50% !important;
+                            padding: 1px;
+                            background: linear-gradient(
+                              145deg,
+                              rgba(170, 170, 170, 0.7) 0%,
+                              rgba(0, 0, 0, 0) 50%
+                            );
+                            -webkit-mask:
+                              linear-gradient(#000 0 0) content-box,
+                              linear-gradient(#000 0 0);
+                            -webkit-mask-composite: xor;
+                            mask-composite: exclude;
+                            pointer-events: none;
+                            z-index: 2;
+                          }
+
+                          ha-card::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0px;
+                            border-radius: 50% !important;
+                            background: transparent !important;
+                            backdrop-filter: none !important; 
+                            -webkit-backdrop-filter: none !important;
+                            pointer-events: none;
+                            z-index: 0;
+                          }
+                    - type: custom:button-card
+                      show_icon: false
+                      show_name: true
+                      name: Présence
+                      styles:
+                        card:
+                          - background: none
+                          - box-shadow: none
+                          - border: none
+                          - width: 55px
+                          - padding-top: 4px
+                          - margin: 0 auto
+                        name:
+                          - font-size: 13px
+                          - color: white
+                          - text-align: center
+                - type: custom:button-card
+                  show_icon: false
+                  show_name: false
+                  styles:
+                    card:
+                      - background: none
+                      - border: none
+                      - width: 55px
+                      - height: 55px
+                - type: vertical-stack
+                  cards:
+                    - type: custom:button-card
+                      entity: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                      show_name: false
+                      icon: mdi:shield-lock-outline
+                      tap_action:
+                        action: call-service
+                        service: alarm_control_panel.alarm_arm_away # Active votre alarme en mode Absence
+                        target:
+                          entity_id: alarm_control_panel.votre_alarme # Remplacez l'entité par votre alarme
+                        data:
+                          code: "votre_code" # Remplacez par votre code défini pour activer/désactiver votre alarme
+                      styles:
+                        card:
+                          - background: >
+                              [[[ if (entity.state === 'armed_away') return
+                              "rgba(255,70,0,0.3)";
+                                  return "rgba(40,40,40,0.4)"; ]]]
+                          - border-radius: 50%
+                          - width: 55px
+                          - height: 55px
+                          - display: flex
+                          - align-items: center
+                          - justify-content: center
+                          - box-shadow: 2px 1px 7px rgba(0,0,0,0.6)
+                          - backdrop-filter: blur(5px)
+                        icon:
+                          - width: 32px
+                          - height: 32px
+                          - color: rgb(180, 180, 180)
+                      card_mod:
+                        style: |
+                          :host {
+                            display: block;
+                            overflow: visible;
+                            position: relative;
+                            border-radius: 50% !important;
+                            transform-origin: center;
+                            border: none !important;
+                          }
+
+                          :host::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            border-radius: 50% !important;
+                            padding: 1px;
+                            background: linear-gradient(
+                              145deg,
+                              rgba(170, 170, 170, 0.7) 0%,
+                              rgba(0, 0, 0, 0) 50%
+                            );
+                            -webkit-mask:
+                              linear-gradient(#000 0 0) content-box,
+                              linear-gradient(#000 0 0);
+                            -webkit-mask-composite: xor;
+                            mask-composite: exclude;
+                            pointer-events: none;
+                            z-index: 2;
+                          }
+
+                          ha-card::before {
+                            content: "";
+                            position: absolute;
+                            inset: 0px;
+                            border-radius: 50% !important;
+                            background: transparent !important;
+                            backdrop-filter: none !important; 
+                            -webkit-backdrop-filter: none !important;
+                            pointer-events: none;
+                            z-index: 0;
+                          }
+                    - type: custom:button-card
+                      show_icon: false
+                      show_name: true
+                      name: Absence
+                      styles:
+                        card:
+                          - background: none
+                          - box-shadow: none
+                          - border: none
+                          - width: 55px
+                          - padding-top: 4px
+                          - margin: 0 auto
+                        name:
+                          - font-size: 13px
+                          - color: white
+                          - text-align: center
