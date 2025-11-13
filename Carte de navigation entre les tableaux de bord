@@ -1,0 +1,411 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/Accueil # Votre page d'accueil
+    hold_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/Accueil
+    double_tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/Accueil
+    card_mod:
+      style: |
+        :host {
+          display: block;
+          overflow: visible;
+          position: relative;
+          border-radius: 20px;
+          transform-origin: center;
+          border: none !important;
+        }
+
+        :host::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(
+            145deg,
+            rgba(140, 140, 140, 0.7) 0%,
+            rgba(0, 0, 0, 0) 60%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 18px;
+          background: rgba(60, 60, 60, 0.4);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        ha-card {
+          background: transparent;
+          position: relative;
+          z-index: 1;
+          border-radius: 20px;
+          overflow: visible;
+          padding: 0;
+          box-shadow: none;
+          border: none !important;
+        }
+    icon: mdi:home
+  - type: spacer
+  - type: template
+    tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/personnes # Vue 2 qui affiche les personnes présentes ou absentes à votre domicile
+    hold_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/personnes
+    double_tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/personnes
+    card_mod:
+      style: |
+        :host {
+          display: block;
+          overflow: visible;
+          position: relative;
+          border-radius: 20px;
+          transform-origin: center;
+          border: none !important;
+        }
+
+        :host::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(140, 140, 140, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 18px;
+          background: rgba(60, 60, 60, 0.4);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        ha-card {
+          background: transparent;
+          position: relative;
+          z-index: 1;
+          border-radius: 20px;
+          overflow: visible;
+          padding: 0;
+          box-shadow: none;
+          border: none !important;
+        }
+    icon: mdi:account
+  - type: spacer
+  - type: template
+    entity: alarm_control_panel.votre_alarme
+    icon: > # Change la couleur et l'icône en fonction de l'état de votre alarme (modifiez les entités par la votre)
+      {% if is_state('alarm_control_panel.votre_alarme', 'disarmed') %}
+        mdi:shield-off-outline
+      {% elif is_state('alarm_control_panel.votre_alarme', 'armed_home') %}
+        mdi:shield-home-outline
+      {% elif is_state('alarm_control_panel.votre_alarme', 'armed_away') %}
+        mdi:home-export-outline
+      {% else %}
+        mdi:shield-alert
+      {% endif %}
+    layout: icon_name
+    tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/alarme # Vue 3 qui affiche les modes de votre alarme ainsi que son état
+    hold_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/alarme
+    double_tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/alarme
+    card_mod:
+      style: |
+        :host {
+          display: block;
+          overflow: visible;
+          position: relative;
+          border-radius: 20px;
+          transform-origin: center;
+          border: none !important;
+        }
+
+        :host::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(140, 140, 140, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 18px;
+          background: {% if is_state('alarm_control_panel.votre_alarme', 'disarmed') %}
+            rgba(0, 180, 200, 0.3)
+          {% elif is_state('alarm_control_panel.votre_alarme', 'armed_home') %}
+            rgba(255, 70, 0, 0.3)
+          {% elif is_state('alarm_control_panel.votre_alarme', 'armed_away') %}
+            rgba(255, 70, 0, 0.3)
+          {% else %}
+            rgba(120, 120, 120, 0.6)
+          {% endif %};
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        ha-card {
+          background: transparent;
+          position: relative;
+          z-index: 1;
+          border-radius: 20px;
+          overflow: visible;
+          padding: 0;
+          box-shadow: none;
+          border: none !important;
+        }
+  - type: spacer
+  - type: template
+    tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/capteurs # Vue 4 qui affiche la température enregistrée par vos capteurs, ainsi que l’ensoleillement si vous en avez la possibilité
+    hold_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/capteurs
+    double_tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/capteurs
+    card_mod:
+      style: |
+        :host {
+          display: block;
+          overflow: visible;
+          position: relative;
+          border-radius: 20px;
+          transform-origin: center;
+          border: none !important;
+        }
+
+        :host::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(140, 140, 140, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 18px;
+          background: rgba(60, 60, 60, 0.4);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        ha-card {
+          background: transparent;
+          position: relative;
+          z-index: 1;
+          border-radius: 20px;
+          overflow: visible;
+          padding: 0;
+          box-shadow: none;
+          border: none !important;
+        }
+    icon: mdi:thermometer
+  - type: spacer
+  - type: template
+    icon: mdi:devices
+    tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/resume # Vue 5 qui affiche le résumé de vos appareils (combien de volets sont ouverts, de lampes allumées, etc)
+    hold_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/resume
+    double_tap_action:
+      action: navigate
+      navigation_path: /tableau-de-bord-iphone/resume
+    card_mod:
+      style: |
+        :host {
+          display: block;
+          overflow: visible;
+          position: relative;
+          border-radius: 20px;
+          transform-origin: center;
+          border: none !important;
+        }
+
+        :host::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: 20px;
+          padding: 1px;
+          background: linear-gradient(
+            140deg,
+            rgba(140, 140, 140, 0.7) 10%,
+            rgba(0, 0, 0, 0) 70%
+          );
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        ha-card::before {
+          content: "";
+          position: absolute;
+          inset: 0px;
+          border-radius: 18px;
+          background: rgba(60, 60, 60, 0.4);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(12px);
+          box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.6);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        ha-card {
+          background: transparent;
+          position: relative;
+          z-index: 1;
+          border-radius: 20px;
+          overflow: visible;
+          padding: 0;
+          box-shadow: none;
+          border: none !important;
+        }
+card_mod:
+  style: |
+    :host {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%);
+      width: calc(100% - 57px);
+      z-index: 2;
+      display: block;
+      overflow: visible;
+      border: none !important;
+      background: rgb(40, 40, 40, 0.6);
+    }
+
+    :host::before {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 30px;
+      padding: 1px;
+      background: linear-gradient(
+        172deg,
+        rgba(140, 140, 140, 0.7) 0%,
+        rgba(0, 0, 0, 0) 60%
+      );
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    :host::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 30px;
+      background: transparent;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.8);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    ha-card {
+      background: transparent;
+      position: relative;
+      z-index: 2;
+      border-radius: 20px;
+      overflow: visible;
+      padding: 0;
+      box-shadow: none;
+      border: none;
+    }
+mushroom-chip:
+  style: |
+    --chip-icon-size: 20px !important;
+    --chip-height: 32px !important;
+    margin: 0 2px !important;
